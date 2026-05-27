@@ -488,6 +488,21 @@ textarea {
     background: var(--cyan);
 }
 
+/* Ensure close button ("X") and theme toggle are perfectly visible on mobile menu overlay */
+.hamburger.active span {
+    background: var(--cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.8) !important;
+}
+
+.navbar:has(.hamburger.active) .theme-toggle {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.navbar:has(.hamburger.active) .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+}
+
 /* Mobile Menu Overlay */
 .mobile-menu-overlay {
     position: fixed;
