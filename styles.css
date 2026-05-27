@@ -494,12 +494,14 @@ textarea {
     box-shadow: 0 0 10px rgba(0, 245, 255, 0.8) !important;
 }
 
-.navbar:has(.hamburger.active) .theme-toggle {
+.navbar:has(.hamburger.active) .theme-toggle,
+.navbar.mobile-menu-active .theme-toggle {
     color: #ffffff !important;
     background: rgba(255, 255, 255, 0.15) !important;
 }
 
-.navbar:has(.hamburger.active) .theme-toggle:hover {
+.navbar:has(.hamburger.active) .theme-toggle:hover,
+.navbar.mobile-menu-active .theme-toggle:hover {
     background: rgba(255, 255, 255, 0.25) !important;
 }
 

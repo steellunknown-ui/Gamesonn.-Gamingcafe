@@ -181,6 +181,7 @@ function initMobileMenu() {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         mobileOverlay.classList.toggle('active');
+        navbar.classList.toggle('mobile-menu-active');
         document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
     });
 
@@ -188,6 +189,7 @@ function initMobileMenu() {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             mobileOverlay.classList.remove('active');
+            navbar.classList.remove('mobile-menu-active');
             document.body.style.overflow = '';
         });
     });
