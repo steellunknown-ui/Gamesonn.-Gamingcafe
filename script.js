@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroVideoFallback();
     setMinDate();
     initLightbox();
-    initTestimonials();
 });
 
 // ============ THEME TOGGLE ============
@@ -864,78 +863,7 @@ function initLightbox() {
     });
 }
 
-// ============ TESTIMONIALS SLIDER ============
-function initTestimonials() {
-    const track = document.querySelector('.testimonials-track');
-    const container = document.querySelector('.testimonials-slider');
-    const prevBtn = document.getElementById('tsPrev');
-    const nextBtn = document.getElementById('tsNext');
-    let cards = document.querySelectorAll('.testimonial-card');
 
-    if (!track || !container || !prevBtn || !nextBtn || cards.length === 0) return;
-
-    let currentPos = 0;
-    let targetPos = 0;
-    let itemWidth = 0;
-    let originalWidth = 0;
-    let isHovered = false;
-    const autoSpeed = 0.5; // Controls the slow continuous scroll speed
-
-    function updateDimensions() {
-        // Find gap and width
-        const cardWidth = cards[0].offsetWidth;
-        const gap = parseInt(window.getComputedStyle(track).gap) || 32;
-        itemWidth = cardWidth + gap;
-        // The HTML contains 3 unique cards we duplicated = 6 cards. 
-        // We consider the "original" set width to be exactly 3 items.
-        originalWidth = itemWidth * 3;
-    }
-
-    // Initial setup
-    updateDimensions();
-
-    function loop() {
-        if (!isHovered) {
-            targetPos += autoSpeed;
-        }
-
-        // Infinite Wrap Logic
-        if (targetPos >= originalWidth) {
-            targetPos -= originalWidth;
-            currentPos -= originalWidth;
-        } else if (targetPos < 0) {
-            targetPos += originalWidth;
-            currentPos += originalWidth;
-        }
-
-        // Smooth Lerp Towards Target
-        currentPos += (targetPos - currentPos) * 0.1;
-
-        track.style.transform = `translateX(-${currentPos}px)`;
-        requestAnimationFrame(loop);
-    }
-
-    // Hover Interaction: Pause loop
-    container.addEventListener('mouseenter', () => isHovered = true);
-    container.addEventListener('mouseleave', () => isHovered = false);
-
-    // Manual Bump Navigation
-    nextBtn.addEventListener('click', () => {
-        targetPos += itemWidth;
-    });
-
-    prevBtn.addEventListener('click', () => {
-        targetPos -= itemWidth;
-    });
-
-    // Handle Window Resize
-    window.addEventListener('resize', () => {
-        updateDimensions();
-    });
-
-    // Start Animation Loop
-    loop();
-}
 
 // ============ CONSOLE BRANDING ============
 console.log(`
